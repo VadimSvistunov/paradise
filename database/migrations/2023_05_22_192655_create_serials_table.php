@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('year');
-            $table->decimal('rating', 3, 1);
-            $table->string('categories_id');
+            $table->decimal('rating', 3, 1)->nullable();
+            $table->string('categories_ids');
             $table->timestamps();
         });
     }

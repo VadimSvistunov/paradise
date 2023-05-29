@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('director_id');
+            $table->unsignedBigInteger('director_id')->nullable();
             $table->integer('year');
-            $table->decimal('rating', 3, 1);
-            $table->string('categories_id');
+            $table->decimal('rating', 3, 1)->nullable();
+            $table->string('categories_ids');
             $table->timestamps();
 
             $table->foreign('director_id')
