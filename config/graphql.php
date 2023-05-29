@@ -75,11 +75,13 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'film' => App\GraphQL\Queries\FilmQuery::class,
-                'films' => App\GraphQL\Queries\FilmsQuery::class,
+                'film' => App\GraphQl\Queries\FilmQuery::class,
+                'films' => App\GraphQl\Queries\FilmsQuery::class,
             ],
             'mutation' => [
-                'createFilm' => App\GraphQL\Mutations\CreateFilmMutation::class,
+                'createFilm' => App\GraphQl\Mutations\CreateFilmMutation::class,
+                'deleteFilm' => App\GraphQl\Mutations\DeleteFilmMutation::class,
+                'updateFilm' => App\GraphQl\Mutations\UpdateFilmMutation::class,
             ],
             // Laravel HTTP middleware
             'middleware' => null,
@@ -102,7 +104,7 @@ return [
     // ]
     //
     'types' => [
-        'Film' => App\GraphQL\Types\FilmType::class,
+        'Film' => App\GraphQl\Types\FilmType::class,
     ],
     // The types will be loaded on demand. Default is to load all types on each request
     // Can increase performance on schemes with many types
