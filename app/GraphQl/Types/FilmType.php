@@ -25,15 +25,15 @@ class FilmType extends GraphQlType
                 'type' => Type::nonNull(Type::string()),
             ],
             'director_id' => [
-                'type' => Type::nonNull(Type::int()),
+                'type' => Type::int(),
             ],
             'year' => [
                 'type' => Type::nonNull(Type::int()),
             ],
             'rating' => [
-                'type' => Type::nonNull(Type::float()),
+                'type' => Type::float(),
             ],
-            'categories_id' => [
+            'categories_ids' => [
                 'type' => Type::nonNull(Type::string()),
             ],
         ];

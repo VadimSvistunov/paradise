@@ -4,13 +4,13 @@ namespace App\GraphQl\Mutations;
 
 use App\Models\Film;
 use GraphQL\Type\Definition\Type as GraphQLType;
-use Rebing\GraphQL\Support\Mutation;
 use Rebing\GraphQL\Support\Facades\GraphQL;
+use Rebing\GraphQL\Support\Mutation;
 
-class CreateFilmMutation extends Mutation
+class UpdateFilmMutation extends Mutation
 {
     protected $attributes = [
-        "name" => "createFilm",
+        "name" => "updateFilm",
     ];
     public function type(): GraphQLType
     {
@@ -20,6 +20,10 @@ class CreateFilmMutation extends Mutation
     public function args(): array
     {
         return [
+            'id' => [
+                'name' => 'id',
+                'type' => GraphQLType::nonNull(GraphQLType::id()),
+            ],
             'name' => [
                 'name' => 'name',
                 'type' => GraphQLType::nonNull(GraphQLType::string()),
@@ -45,9 +49,9 @@ class CreateFilmMutation extends Mutation
 
     public function resolve($root, $args)
     {
-        $film = new Film();
+        $film = Film::findOrFail($args['id']);
         $film->fill($args);
-        $film->save();
+        $film->update();
         return $film;
     }
 }
